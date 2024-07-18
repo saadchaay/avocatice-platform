@@ -1,0 +1,30 @@
+info:
+  app:
+    name: registry service application
+    description: Microservice registry
+    version: 1.0.0.0
+server:
+  port: 8761
+# prevent the register in eurka config
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+  server:
+    enableSelfPreservation: true
+    eviction-interval-timer-in-ms: 5000
+
+# Application name discovery
+spring:
+  application:
+    name: registry-service
+
+
+# profil Dev local + Dev + Qualif + Prod
+---
+spring:
+  config:
+    import: "optional:configserver:http://localhost:8888"
+
+

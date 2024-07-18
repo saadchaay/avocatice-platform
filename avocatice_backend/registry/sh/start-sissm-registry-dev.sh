@@ -1,0 +1,1 @@
+nohup java -Xms128m -Xmx1024m -jar -DSpring.profiles.active=dev -Dserver.port=8761 /opt/Application/sirhus/api/sissm-registry-dev-1.0.0.0-SNAPSHOT.jar 2>&1 &

@@ -1,0 +1,5 @@
+# Application name config-server
+spring:
+  application:
+    name: sissm-registry-service
+   

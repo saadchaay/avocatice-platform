@@ -1,0 +1,1 @@
+nohup java -Xms128m -Xmx1024m -jar -DSpring.profiles.active=qualif -Dserver.port=8761  /opt/Application/sirhus/api/sissm-registry-qualif-1.0.0.0-SNAPSHOT.jar 2>&1 &
