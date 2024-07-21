@@ -93,7 +93,7 @@
                         class="px-6 py-4  text-center whitespace-no-wrap border-b border-gray-200"
                       >
                         <div class="text-sm text-center leading-5 text-gray-900">
-                          {{d.client['prénom']}}
+                          {{d.client['prenom']}}
                         </div>
                       </td>
 
@@ -117,7 +117,7 @@
                       <td
                         class=" text-center px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
                       >
-                        {{d['date_créneau']}} {{'  ' + d['créneau'].heure_debut + 'h00'}}
+                        {{d['date_creneau']}} {{'  ' + d['creneau'].heureDebut + 'h00'}}
 
                       </td>
                       <td
@@ -130,8 +130,8 @@
                         class=" text-center px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
                       >
 <!--                        {{d['reponse']}}-->
-                        {{d.reponse != null ? 'Terminer' : ''}}
-                        <button *ngIf="d.reponse==null"
+                        {{status ? 'Terminer' : ''}}
+                        <button *ngIf="!status"
                                 (click)="validerConsultation(d.id)"
                                 class="inline-flex cursor-pointer items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary hover:bg-white hover:text-primary focus:shadow-outline focus:outline-none"
                                 aria-label="Sign up" title="Sign up">

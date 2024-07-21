@@ -1,5 +1,0 @@
-variables:
-## Variables generales Cloud Foundry
-  BUILD_IMAGE: dockerproxy.repos.tech.orange/maven:3.9.4
-  INFO_IMAGE: ictu/sshpass:latest
-  DEPLOY_IMAGE: ictu/sshpass:latest

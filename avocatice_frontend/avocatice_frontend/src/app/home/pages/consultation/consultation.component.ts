@@ -55,6 +55,7 @@ export class ConsultationComponent implements OnInit {
       next: (data) => {
         console.log(data)
         this.data = data;
+        // debugger;
       },
       complete: () => {
         console.log('Request complete.');

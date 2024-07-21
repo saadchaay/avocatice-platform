@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserServiceService} from "../../service/user-service.service";
+import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-avocat',
@@ -15,8 +17,10 @@ export class AvocatComponent {
   villes = ['Casablanca', 'Rabat', 'Marrakech', 'Fès', 'Tanger', 'Agadir', 'Meknès', 'Oujda', 'Kenitra', 'Tétouan'];
   specialties = [  'Droit du travail',  'Droit pénal',  'Droit de la famille',  'Droit immobilier',  'Droit des affaires',  'Droit fiscal',  'Droit de la propriété intellectuelle',  'Droit international',  'Droit de l\'environnement',  'Droit des successions'];
 
-  constructor(private formBuilder: FormBuilder, private userService: UserServiceService) {
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserServiceService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -48,6 +52,9 @@ export class AvocatComponent {
             setTimeout(() => this.showRegisterAlert = true, 1000)
             setTimeout(() => this.showRegisterAlert = false, 5000)
           }, 5000);
+          // Swal
+          this.showSuccessMsg("Votre compte a été créé avec succès");
+          this.router.navigate(['/']).then();
         },
         error: (error) => {
           console.log(error);
@@ -56,4 +63,14 @@ export class AvocatComponent {
     }
   }
 
+
+  showSuccessMsg(message: string): void {
+    Swal.fire({
+      icon: 'success',
+      title: "Succès",
+      text: message,
+      confirmButtonColor: "#4359a5",
+      reverseButtons: true
+    }).then();
+  }
 }

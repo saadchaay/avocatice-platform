@@ -3,6 +3,7 @@ package com.example.consultationservice.services;
 
 import com.example.consultationservice.entities.Consultation;
 import com.example.consultationservice.entities.Creneaux;
+import com.example.consultationservice.models.dto.CreneauxDto;
 import com.example.consultationservice.repositories.CreneuaxRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class CreneauService {
     }
 
 
-    public List<Creneaux> allCreneaux(String date) throws ParseException {
+    public List<CreneauxDto> allCreneaux(String date) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date1 = dateFormat.parse(date);
         List<Consultation> consultationsCrenaux = null;
@@ -49,7 +50,7 @@ public class CreneauService {
 
         List<Creneaux> crenuax = creneuaxRepository.findAll();
         if (consultationsCrenaux.size() == 0 || consultationsCrenaux == null) {
-            return crenuax;
+            return CreneauxDto.toDtoList(crenuax);
 
         }
         for (Consultation consultation : consultationsCrenaux) {
@@ -68,6 +69,6 @@ public class CreneauService {
 
         }
 
-        return crenuax;
+        return CreneauxDto.toDtoList(crenuax);
     }
 }

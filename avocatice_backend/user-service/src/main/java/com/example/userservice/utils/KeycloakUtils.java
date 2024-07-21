@@ -43,7 +43,7 @@ public class KeycloakUtils {
                 .clientId(clientId)
 //              .clientSecret("38NhHZHruWl3Cp4jRYGz3qyCAEuQPFC8")
                 .username(userName)
-                .password(password)
+                .password("password")
                 .build();
 //                .resteasyClient(new ResteasyClientBuilder().connectionPoolSize(10).build()).build();
     }

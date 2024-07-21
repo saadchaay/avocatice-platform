@@ -2,6 +2,7 @@ package com.example.consultationservice.web;
 
 
 import com.example.consultationservice.entities.Creneaux;
+import com.example.consultationservice.models.dto.CreneauxDto;
 import com.example.consultationservice.services.CreneauService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class CreneauRestController {
     }
 
     @GetMapping("/crenaux/{date}")
-    public  List<Creneaux> getCreneaux(@PathVariable String date) throws ParseException {
+    public  List<CreneauxDto> getCreneaux(@PathVariable String date) throws ParseException {
         System.out.println("from get cren");
         return creneauService.allCreneaux(date);
     }

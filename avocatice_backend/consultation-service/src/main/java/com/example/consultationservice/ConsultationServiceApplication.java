@@ -23,7 +23,7 @@ public class ConsultationServiceApplication {
     }
 
 
-    @Bean
+//    @Bean
     CommandLineRunner start(CreneauService creneauService, ConsultationService consultationService) {
         return args -> {
             for (int i = 8; i < 18; i++) {
@@ -41,8 +41,8 @@ public class ConsultationServiceApplication {
 
                 consultation.setSjt_consultation("azerty");
                 consultation.setType("Ecrite");
-                consultation.setAvocatId("21221");
-                consultation.setClientId("21221");
+//                consultation.setAvocatId("21221");
+//                consultation.setClientId("21221");
                 consultation.setDate_créneau(date);
                 consultation.setCréneau(creneauService.getCreneux(2L));
 

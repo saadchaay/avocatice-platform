@@ -2,7 +2,9 @@ package com.example.consultationservice.entities;
 
 import com.example.consultationservice.models.Avocat;
 import com.example.consultationservice.models.Client;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,8 +35,10 @@ public class Consultation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_creneau")
     private Creneaux créneau;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String clientId;
+
     @Transient
     private Client client;
 

@@ -1,20 +1,13 @@
 package com.example.consultationservice.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Creneaux implements Serializable {
+public class Creneaux {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +15,6 @@ public class Creneaux implements Serializable {
     private String heure_debut;
     private String heure_fin;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "créneau", cascade = CascadeType.ALL)
     private List<Consultation> consultations = new ArrayList<>();
 

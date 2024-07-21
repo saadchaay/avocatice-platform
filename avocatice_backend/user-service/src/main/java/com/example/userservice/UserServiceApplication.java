@@ -21,7 +21,7 @@ public class UserServiceApplication {
 //    @Bean
     CommandLineRunner start(AvocatServiceImpl avocatService) {
         return args -> {
-            int i = 914;
+            int i = 9155;
             UserInputDto avocat = new UserInputDto();
             avocat.setEmail("avocat" + i + "@gmail.com");
             avocat.setCin("WA123" + i);

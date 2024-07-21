@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserServiceService} from "../../service/user-service.service";
-
+import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -14,8 +15,11 @@ export class ClientComponent implements OnInit {
 
   villes = ['Casablanca', 'Rabat', 'Marrakech', 'Fès', 'Tanger', 'Agadir', 'Meknès', 'Oujda', 'Kenitra', 'Tétouan'];
 
-  constructor(private formBuilder: FormBuilder, private userService: UserServiceService) {
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserServiceService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -44,8 +48,11 @@ export class ClientComponent implements OnInit {
             this.sendingRequest = false;
             this.registerForm.reset()
             setTimeout(() => this.showRegisterAlert = true, 1000)
-            setTimeout(() => this.showRegisterAlert = false, 5000)
+            setTimeout(() => this.showRegisterAlert = false, 3000)
           }, 5000);
+
+          this.showSuccessMsg("Votre compte a été créé avec succès");
+          this.router.navigate(['/']).then();
         },
         error: (error) => {
           console.log(error);
@@ -66,4 +73,13 @@ export class ClientComponent implements OnInit {
     }
   }
 
+  showSuccessMsg(message: string): void {
+    Swal.fire({
+      icon: 'success',
+      title: "Succès",
+      text: message,
+      confirmButtonColor: "#4359a5",
+      reverseButtons: true
+    }).then();
+  }
 }

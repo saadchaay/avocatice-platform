@@ -3,6 +3,7 @@ package com.example.consultationservice.web;
 
 import com.example.consultationservice.entities.Consultation;
 import com.example.consultationservice.entities.Creneaux;
+import com.example.consultationservice.models.dto.ConsultationDto;
 import com.example.consultationservice.services.ConsultationService;
 import com.example.consultationservice.services.CreneauService;
 import org.springframework.web.bind.annotation.*;
@@ -42,12 +43,12 @@ public class ConsultationRestController {
     }
 
     @GetMapping("/consultation/client/{id}")
-    public List<Consultation> getConsultationByClient(@PathVariable String id) {
+    public List<?> getConsultationByClient(@PathVariable String id) {
         return consultationService.allConsultationByClient(id);
     }
 
     @GetMapping("/consultation/avocat/{id}")
-    public List<Consultation> getConsultationByAvocat(@PathVariable String id) {
+    public List<ConsultationDto> getConsultationByAvocat(@PathVariable String id) {
         return consultationService.allConsultationByAvocatId(id);
     }
 

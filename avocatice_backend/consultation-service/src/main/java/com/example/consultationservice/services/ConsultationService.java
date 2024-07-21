@@ -3,6 +3,7 @@ package com.example.consultationservice.services;
 
 import com.example.consultationservice.entities.Consultation;
 import com.example.consultationservice.entities.Creneaux;
+import com.example.consultationservice.models.dto.ConsultationDto;
 import com.example.consultationservice.repositories.ConsultationRepository;
 import com.example.consultationservice.repositories.CreneuaxRepository;
 import org.springframework.stereotype.Service;
@@ -43,16 +44,12 @@ public class ConsultationService {
     }
 
 
-    public List<Consultation> allConsultationByAvocatId(String id) {
+    public List<ConsultationDto> allConsultationByAvocatId(String id) {
 
 
         List<Consultation> collect = consultationRepository.findAll()
                 .stream()
-                .filter(consultation -> consultation.getAvocatId().equals(id))
-//                .map(consultation -> consultation.setAvocat(
-//                        userRestClient.getAvocat(
-//                                consultation.getAvocatId())))
-
+                .filter(consultation -> id.equals(consultation.getAvocatId()))
                 .collect(Collectors.toList());
         System.out.println(collect);
         for (Consultation c : collect) {
@@ -62,21 +59,20 @@ public class ConsultationService {
         }
         System.out.println(collect);
 
-        return collect;
+        return ConsultationDto.toDtoList(collect);
     }
 
-    public List<Consultation> allConsultationByClient(String id) {
+    public List<ConsultationDto> allConsultationByClient(String id) {
         List<Consultation> collect = consultationRepository.findAll()
                 .stream()
-                .filter(consultation -> consultation.getClientId().equals(id))
+                .filter(consultation -> id.equals(consultation.getClientId()))
                 .collect(Collectors.toList());
-
-
         for (Consultation c : collect) {
             c.setAvocat(userRestClient.getAvocat(c.getAvocatId()));
             c.setClient(userRestClient.getClient(c.getClientId()));
         }
-        return collect;
+        return ConsultationDto.toDtoList(collect);
+//        return collect;
 
     }
 
